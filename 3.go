@@ -6,23 +6,19 @@ import (
 	"os"
 )
 
-func check(e error) {
-	if e != nil {
-		panic(e)
-	}
-}
-
 type dados struct {
 	Dia   int     `json:"dia"`
 	Valor float64 `json:"valor"`
 }
 
 func main() {
-	data, err := os.ReadFile("dados.json")
-	check(err)
+	file, err := os.ReadFile("dados.json")
+	if err != nil {
+		panic(err)
+	}
 
-	var jdata []dados
-	json.Unmarshal(data, &jdata)
+	var data []dados
+	json.Unmarshal(file, &data)
 
 	var min float32
 	var max float32
@@ -30,21 +26,21 @@ func main() {
 
 	var n int
 
-	for i := 0; i < len(jdata); i++ {
+	for i := 0; i < len(data); i++ {
 		if i == 0 {
-			min = float32(jdata[i].Valor)
-			max = float32(jdata[i].Valor)
-			avg = float32(jdata[i].Valor)
+			min = float32(data[i].Valor)
+			max = float32(data[i].Valor)
+			avg = float32(data[i].Valor)
 		} else {
-			if jdata[i].Valor > 0 {
-				if min > float32(jdata[i].Valor) {
-					min = float32(jdata[i].Valor)
+			if data[i].Valor > 0 {
+				if min > float32(data[i].Valor) {
+					min = float32(data[i].Valor)
 				}
-				if max < float32(jdata[i].Valor) {
-					max = float32(jdata[i].Valor)
+				if max < float32(data[i].Valor) {
+					max = float32(data[i].Valor)
 				}
 
-				avg += float32(jdata[i].Valor)
+				avg += float32(data[i].Valor)
 				n++
 			}
 		}
@@ -55,7 +51,7 @@ func main() {
 	var n_dias int
 
 	for i := 0; i < n; i++ {
-		if jdata[i].Valor > float64(avg) {
+		if data[i].Valor > float64(avg) {
 			n_dias++
 		}
 	}
