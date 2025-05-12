@@ -20,21 +20,20 @@ bool isFibonacci(int n) {
 }
 
 int main(int argc, char *argv[]) {
-
-  printf("Type a number: ");
+  printf("Digite um número positivo: ");
   int n;
   if (scanf("%d", &n) != 1) {
-    fprintf(stderr, "Invalid input\n");
-    return EXIT_FAILURE;
+    fprintf(stderr, "Entrada invalida\n");
+    exit(EXIT_FAILURE);
   } else if (n < 0) {
-    fprintf(stderr, "Negative numbers are not allowed\n");
-    return EXIT_FAILURE;
+    fprintf(stderr, "Números negativos não permitidos\n");
+    exit(EXIT_FAILURE);
   } else {
     if (isFibonacci(n)) {
-      printf("%d is a Fibonacci number\n", n);
+      printf("%d é um número de Fibonacci\n", n);
     } else {
-      printf("%d is not a Fibonacci number\n", n);
+      printf("%d não é um número de Fibonacci\n", n);
     }
   }
-  return EXIT_SUCCESS;
+  exit(EXIT_SUCCESS);
 }

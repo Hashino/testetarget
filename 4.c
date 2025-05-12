@@ -12,11 +12,11 @@ int main(int argc, char *argv[]) {
 
   printf("Total: %.2f\n", total);
 
-  printf("SP is %.2f%% of total\n", (sp / total) * 100);
-  printf("RJ is %.2f%% of total\n", (rj / total) * 100);
-  printf("MG is %.2f%% of total\n", (mg / total) * 100);
-  printf("ES is %.2f%% of total\n", (es / total) * 100);
-  printf("Outros is %.2f%% of total\n", (outros / total) * 100);
+  printf("SP é %.2f%% do total\n", (sp / total) * 100);
+  printf("RJ é %.2f%% do total\n", (rj / total) * 100);
+  printf("MG é %.2f%% do total\n", (mg / total) * 100);
+  printf("ES é %.2f%% do total\n", (es / total) * 100);
+  printf("Outros é %.2f%% do total\n", (outros / total) * 100);
 
   exit(EXIT_SUCCESS);
 }
