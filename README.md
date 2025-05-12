@@ -56,4 +56,4 @@ a) Essa string pode ser informada através de qualquer entrada de sua preferênc
 b) Evite usar funções prontas, como, por exemplo, reverse; 
 ```
 > [!NOTE]
-> [Solução](https://github.com/Hashino/testetarget/blob/master/5.c)
+> [Solução](https://github.com/Hashino/testetarget/blob/master/5.rs)
