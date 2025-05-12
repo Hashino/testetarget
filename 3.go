@@ -20,37 +20,31 @@ func main() {
 	var data []dados
 	json.Unmarshal(file, &data)
 
-	var min float32
-	var max float32
-	var avg float32
+	var min float32 = float32(data[0].Valor)
+	var max float32 = float32(data[0].Valor)
 
+	var avg float32 = 0
 	var n int
 
 	for i := 0; i < len(data); i++ {
-		if i == 0 {
-			min = float32(data[i].Valor)
-			max = float32(data[i].Valor)
-			avg = float32(data[i].Valor)
-		} else {
-			if data[i].Valor > 0 {
-				if min > float32(data[i].Valor) {
-					min = float32(data[i].Valor)
-				}
-				if max < float32(data[i].Valor) {
-					max = float32(data[i].Valor)
-				}
-
-				avg += float32(data[i].Valor)
-				n++
+		if data[i].Valor > 0 {
+			if min > float32(data[i].Valor) {
+				min = float32(data[i].Valor)
 			}
+			if max < float32(data[i].Valor) {
+				max = float32(data[i].Valor)
+			}
+
+			avg += float32(data[i].Valor)
+			n++
 		}
 	}
 
-	avg = avg / float32(n)
+	avg /= float32(n)
 
-	var n_dias int
+	var n_dias int = 0
 
-	for i := 0; i < n; i++ {
+	for i := 0; i < len(data); i++ {
 		if data[i].Valor > float64(avg) {
 			n_dias++
 		}
@@ -58,6 +52,5 @@ func main() {
 
 	fmt.Printf("Menor valor: %.2f\n", min)
 	fmt.Printf("Maior valor: %.2f\n", max)
-	fmt.Printf("Média: %.2f\n", avg)
 	fmt.Printf("Número de dias acima da média: %d\n", n_dias)
 }
