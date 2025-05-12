@@ -1,9 +1,9 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"os"
-	"encoding/json"
 )
 
 func check(e error) {
@@ -24,9 +24,11 @@ func main() {
 	var jdata []dados
 	json.Unmarshal(data, &jdata)
 
-	var min float32;
-	var max float32;
-	var avg float32;
+	var min float32
+	var max float32
+	var avg float32
+
+	var n int
 
 	for i := 0; i < len(jdata); i++ {
 		if i == 0 {
@@ -34,21 +36,25 @@ func main() {
 			max = float32(jdata[i].Valor)
 			avg = float32(jdata[i].Valor)
 		} else {
-			if min > float32(jdata[i].Valor) {
-				min = float32(jdata[i].Valor)
+			if jdata[i].Valor > 0 {
+				if min > float32(jdata[i].Valor) {
+					min = float32(jdata[i].Valor)
+				}
+				if max < float32(jdata[i].Valor) {
+					max = float32(jdata[i].Valor)
+				}
+
+				avg += float32(jdata[i].Valor)
+				n++
 			}
-			if max < float32(jdata[i].Valor) {
-				max = float32(jdata[i].Valor)
-			}
-			avg += float32(jdata[i].Valor)
 		}
 	}
 
-	avg = avg / float32(len(jdata))
+	avg = avg / float32(n)
 
-	var n_dias int;
+	var n_dias int
 
-	for i := 0; i < len(jdata); i++ {
+	for i := 0; i < n; i++ {
 		if jdata[i].Valor > float64(avg) {
 			n_dias++
 		}
