@@ -1,3 +1,24 @@
+# Como rodar
+
+Necessário ter instalado um compilador de C (como clang ou gcc), go e rust
+
+Para rodar códigos `.c` faça:
+```bash
+gcc {arquivo}.c -o {arquivo} 
+./{arquivo}
+```
+
+Para rodar códigos `.go` faça:
+```bash
+go run {arquivo}.go
+```
+
+Para rodar códigos `.rs` faça:
+```bash
+rustc {arquivo}.rs
+./{arquivo}
+```
+
 # Soluções:
 
 ## 1
