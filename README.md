@@ -8,7 +8,7 @@ Imprimir(SOMA);
 Ao final do processamento, qual será o valor da variável SOMA? 
 ``` 
 > [!NOTE]
-> Solução: 78
+> Solução: 91
 
 ## 2
 ```
