@@ -20,6 +20,11 @@ func main() {
 	var data []dados
 	json.Unmarshal(file, &data)
 
+	if len(data) == 0 {
+		fmt.Println("Nenhum dado encontrado.")
+		return
+	}
+
 	var min float32 = float32(data[0].Valor)
 	var max float32 = float32(data[0].Valor)
 
